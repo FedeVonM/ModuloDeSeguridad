@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{08848788-6BF0-4BF9-9C12-D1E253992774}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VISTA</RootNamespace>
+    <AssemblyName>VISTA</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Inicio\frmDATOS_USUARIO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inicio\frmDATOS_USUARIO.Designer.cs">
+      <DependentUpon>frmDATOS_USUARIO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inicio\frmLOGIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inicio\frmLOGIN.Designer.cs">
+      <DependentUpon>frmLOGIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inicio\frmRECUPERAR_CLAVE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inicio\frmRECUPERAR_CLAVE.Designer.cs">
+      <DependentUpon>frmRECUPERAR_CLAVE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inicio\MENU_PRINCIPAL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inicio\MENU_PRINCIPAL.Designer.cs">
+      <DependentUpon>MENU_PRINCIPAL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parametros\frmPARAMETROS_EQUIPO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parametros\frmPARAMETROS_EQUIPO.Designer.cs">
+      <DependentUpon>frmPARAMETROS_EQUIPO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parametros\frmPARAMETROS_EQUIPOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parametros\frmPARAMETROS_EQUIPOS.Designer.cs">
+      <DependentUpon>frmPARAMETROS_EQUIPOS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Seguridad\frmCAMBIAR_CLAVE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seguridad\frmCAMBIAR_CLAVE.Designer.cs">
+      <DependentUpon>frmCAMBIAR_CLAVE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\frmCLAVE_USUARIO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seguridad\frmCLAVE_USUARIO.Designer.cs">
+      <DependentUpon>frmCLAVE_USUARIO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\frmGRUPOS_USUARIOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seguridad\frmGRUPOS_USUARIOS.Designer.cs">
+      <DependentUpon>frmGRUPOS_USUARIOS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\frmGRUPO_USUARIO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seguridad\frmGRUPO_USUARIO.Designer.cs">
+      <DependentUpon>frmGRUPO_USUARIO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\frmUSUARIO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seguridad\frmUSUARIO.Designer.cs">
+      <DependentUpon>frmUSUARIO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\frmUSUARIOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seguridad\frmUSUARIOS.Designer.cs">
+      <DependentUpon>frmUSUARIOS.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Inicio\frmDATOS_USUARIO.resx">
+      <DependentUpon>frmDATOS_USUARIO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inicio\frmLOGIN.resx">
+      <DependentUpon>frmLOGIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inicio\frmRECUPERAR_CLAVE.resx">
+      <DependentUpon>frmRECUPERAR_CLAVE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inicio\MENU_PRINCIPAL.resx">
+      <DependentUpon>MENU_PRINCIPAL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parametros\frmPARAMETROS_EQUIPO.resx">
+      <DependentUpon>frmPARAMETROS_EQUIPO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parametros\frmPARAMETROS_EQUIPOS.resx">
+      <DependentUpon>frmPARAMETROS_EQUIPOS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Seguridad\frmCAMBIAR_CLAVE.resx">
+      <DependentUpon>frmCAMBIAR_CLAVE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Seguridad\frmCLAVE_USUARIO.resx">
+      <DependentUpon>frmCLAVE_USUARIO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Seguridad\frmGRUPOS_USUARIOS.resx">
+      <DependentUpon>frmGRUPOS_USUARIOS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Seguridad\frmGRUPO_USUARIO.resx">
+      <DependentUpon>frmGRUPO_USUARIO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Seguridad\frmUSUARIO.resx">
+      <DependentUpon>frmUSUARIO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Seguridad\frmUSUARIOS.resx">
+      <DependentUpon>frmUSUARIOS.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CONTROLADORA\CONTROLADORA.csproj">
+      <Project>{69791cad-6f9d-42a5-8fac-be571b0c19e0}</Project>
+      <Name>CONTROLADORA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MODELO\MODELO.csproj">
+      <Project>{fafec092-e56a-4dd7-b636-c3c6316b2129}</Project>
+      <Name>MODELO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

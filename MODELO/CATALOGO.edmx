@@ -1,0 +1,497 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MODELO.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="MODELOStoreContainer">
+    <EntitySet Name="USUARIOS" EntityType="MODELO.Store.USUARIOS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GRUPOS" EntityType="MODELO.Store.GRUPOS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FORMULARIOS" EntityType="MODELO.Store.FORMULARIOS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ACCIONES" EntityType="MODELO.Store.ACCIONES" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MODULOS" EntityType="MODELO.Store.MODULOS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SUBMODULOS" EntityType="MODELO.Store.SUBMODULOS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PARAMETROS" EntityType="MODELO.Store.PARAMETROS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="USUARIOGRUPO" EntityType="MODELO.Store.USUARIOGRUPO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GRUPOACCION" EntityType="MODELO.Store.GRUPOACCION" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="MODULOSUBMODULO" Association="MODELO.Store.MODULOSUBMODULO">
+      <End Role="MODULO" EntitySet="MODULOS" />
+      <End Role="SUBMODULO" EntitySet="SUBMODULOS" />
+    </AssociationSet>
+    <AssociationSet Name="SUBMODULOFORMULARIO" Association="MODELO.Store.SUBMODULOFORMULARIO">
+      <End Role="SUBMODULO" EntitySet="SUBMODULOS" />
+      <End Role="FORMULARIO" EntitySet="FORMULARIOS" />
+    </AssociationSet>
+    <AssociationSet Name="FORMULARIOACCION" Association="MODELO.Store.FORMULARIOACCION">
+      <End Role="FORMULARIO" EntitySet="FORMULARIOS" />
+      <End Role="ACCION" EntitySet="ACCIONES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIOGRUPO_USUARIO" Association="MODELO.Store.FK_USUARIOGRUPO_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIOS" />
+      <End Role="USUARIOGRUPO" EntitySet="USUARIOGRUPO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIOGRUPO_GRUPO" Association="MODELO.Store.FK_USUARIOGRUPO_GRUPO">
+      <End Role="GRUPO" EntitySet="GRUPOS" />
+      <End Role="USUARIOGRUPO" EntitySet="USUARIOGRUPO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GRUPOACCION_GRUPO" Association="MODELO.Store.FK_GRUPOACCION_GRUPO">
+      <End Role="GRUPO" EntitySet="GRUPOS" />
+      <End Role="GRUPOACCION" EntitySet="GRUPOACCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GRUPOACCION_ACCION" Association="MODELO.Store.FK_GRUPOACCION_ACCION">
+      <End Role="ACCION" EntitySet="ACCIONES" />
+      <End Role="GRUPOACCION" EntitySet="GRUPOACCION" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="USUARIOS">
+    <Key>
+      <PropertyRef Name="CODIGO" />
+    </Key>
+    <Property Name="CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE_USUARIO" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NOMBRE" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CLAVE" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EMAIL" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TELEFONO" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ACTIVO" Type="bit" Nullable="false" />
+    <Property Name="RESETEAR_CLAVE" Type="bit" Nullable="false" />
+    <Property Name="IMAGEN" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GRUPOS">
+    <Key>
+      <PropertyRef Name="CODIGO" />
+    </Key>
+    <Property Name="CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ACTIVO" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FORMULARIOS">
+    <Key>
+      <PropertyRef Name="CODIGO" />
+    </Key>
+    <Property Name="CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CLASE" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ACTIVO" Type="bit" Nullable="false" />
+    <Property Name="MENU" Type="bit" Nullable="false" />
+    <Property Name="SUBMODULO_CODIGO" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ACCIONES">
+    <Key>
+      <PropertyRef Name="CODIGO" />
+    </Key>
+    <Property Name="CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CONTROL" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FORMULARIO_CODIGO" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MODULOS">
+    <Key>
+      <PropertyRef Name="CODIGO" />
+    </Key>
+    <Property Name="CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SUBMODULOS">
+    <Key>
+      <PropertyRef Name="CODIGO" />
+    </Key>
+    <Property Name="CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MODULO_CODIGO" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PARAMETROS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DIRECTORIO_IMAGENES" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MAIL_HOST" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MAIL_PORT" Type="int" Nullable="false" />
+    <Property Name="ENVIO_MAILS" Type="bit" Nullable="false" />
+    <Property Name="MAIL_CUENTA" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MAIL_CLAVE" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MAIL_NOMBRE_REMITENTE" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NOMBRE_EQUIPO" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MAIL_SSL" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USUARIOGRUPO">
+    <Key>
+      <PropertyRef Name="USUARIO_CODIGO" />
+      <PropertyRef Name="GRUPO_CODIGO" />
+    </Key>
+    <Property Name="USUARIO_CODIGO" Type="int" Nullable="false" />
+    <Property Name="GRUPO_CODIGO" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GRUPOACCION">
+    <Key>
+      <PropertyRef Name="GRUPO_CODIGO" />
+      <PropertyRef Name="ACCION_CODIGO" />
+    </Key>
+    <Property Name="GRUPO_CODIGO" Type="int" Nullable="false" />
+    <Property Name="ACCION_CODIGO" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="MODULOSUBMODULO">
+    <End Role="MODULO" Type="MODELO.Store.MODULOS" Multiplicity="1" />
+    <End Role="SUBMODULO" Type="MODELO.Store.SUBMODULOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MODULO">
+        <PropertyRef Name="CODIGO" />
+      </Principal>
+      <Dependent Role="SUBMODULO">
+        <PropertyRef Name="MODULO_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SUBMODULOFORMULARIO">
+    <End Role="SUBMODULO" Type="MODELO.Store.SUBMODULOS" Multiplicity="1" />
+    <End Role="FORMULARIO" Type="MODELO.Store.FORMULARIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SUBMODULO">
+        <PropertyRef Name="CODIGO" />
+      </Principal>
+      <Dependent Role="FORMULARIO">
+        <PropertyRef Name="SUBMODULO_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FORMULARIOACCION">
+    <End Role="FORMULARIO" Type="MODELO.Store.FORMULARIOS" Multiplicity="1" />
+    <End Role="ACCION" Type="MODELO.Store.ACCIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FORMULARIO">
+        <PropertyRef Name="CODIGO" />
+      </Principal>
+      <Dependent Role="ACCION">
+        <PropertyRef Name="FORMULARIO_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIOGRUPO_USUARIO">
+    <End Role="USUARIO" Type="MODELO.Store.USUARIOS" Multiplicity="1" />
+    <End Role="USUARIOGRUPO" Type="MODELO.Store.USUARIOGRUPO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CODIGO" />
+      </Principal>
+      <Dependent Role="USUARIOGRUPO">
+        <PropertyRef Name="USUARIO_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIOGRUPO_GRUPO">
+    <End Role="USUARIOGRUPO" Type="MODELO.Store.USUARIOGRUPO" Multiplicity="*" />
+    <End Role="GRUPO" Type="MODELO.Store.GRUPOS" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="GRUPO">
+        <PropertyRef Name="CODIGO" />
+      </Principal>
+      <Dependent Role="USUARIOGRUPO">
+        <PropertyRef Name="GRUPO_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GRUPOACCION_GRUPO">
+    <End Role="GRUPO" Type="MODELO.Store.GRUPOS" Multiplicity="1" />
+    <End Role="GRUPOACCION" Type="MODELO.Store.GRUPOACCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GRUPO">
+        <PropertyRef Name="CODIGO" />
+      </Principal>
+      <Dependent Role="GRUPOACCION">
+        <PropertyRef Name="GRUPO_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GRUPOACCION_ACCION">
+    <End Role="GRUPOACCION" Type="MODELO.Store.GRUPOACCION" Multiplicity="*" />
+    <End Role="ACCION" Type="MODELO.Store.ACCIONES" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ACCION">
+        <PropertyRef Name="CODIGO" />
+      </Principal>
+      <Dependent Role="GRUPOACCION">
+        <PropertyRef Name="ACCION_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="MODELO" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="CATALOGO" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="USUARIOS" EntityType="MODELO.USUARIO" />
+          <EntitySet Name="GRUPOS" EntityType="MODELO.GRUPO" />
+          <EntitySet Name="FORMULARIOS" EntityType="MODELO.FORMULARIO" />
+          <EntitySet Name="ACCIONES" EntityType="MODELO.ACCION" />
+          <EntitySet Name="MODULOS" EntityType="MODELO.MODULO" />
+          <EntitySet Name="SUBMODULOS" EntityType="MODELO.SUBMODULO" />
+          <AssociationSet Name="MODULOSUBMODULO" Association="MODELO.MODULOSUBMODULO">
+            <End Role="MODULO" EntitySet="MODULOS" />
+            <End Role="SUBMODULO" EntitySet="SUBMODULOS" />
+          </AssociationSet>
+          <AssociationSet Name="SUBMODULOFORMULARIO" Association="MODELO.SUBMODULOFORMULARIO">
+            <End Role="SUBMODULO" EntitySet="SUBMODULOS" />
+            <End Role="FORMULARIO" EntitySet="FORMULARIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FORMULARIOACCION" Association="MODELO.FORMULARIOACCION">
+            <End Role="FORMULARIO" EntitySet="FORMULARIOS" />
+            <End Role="ACCION" EntitySet="ACCIONES" />
+          </AssociationSet>
+          <AssociationSet Name="USUARIOGRUPO" Association="MODELO.USUARIOGRUPO">
+            <End Role="USUARIO" EntitySet="USUARIOS" />
+            <End Role="GRUPO" EntitySet="GRUPOS" />
+          </AssociationSet>
+          <AssociationSet Name="GRUPOACCION" Association="MODELO.GRUPOACCION">
+            <End Role="GRUPO" EntitySet="GRUPOS" />
+            <End Role="ACCION" EntitySet="ACCIONES" />
+          </AssociationSet>
+          <EntitySet Name="PARAMETROS" EntityType="MODELO.PARAMETRO" />
+          </EntityContainer>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="CODIGO" />
+          </Key>
+          <Property Name="CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_USUARIO" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="CLAVE" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="TELEFONO" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ACTIVO" Type="Boolean" Nullable="false" />
+          <Property Name="RESETEAR_CLAVE" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="GRUPO" Relationship="MODELO.USUARIOGRUPO" FromRole="USUARIO" ToRole="GRUPO" />
+          <Property Name="IMAGEN" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GRUPO">
+          <Key>
+            <PropertyRef Name="CODIGO" />
+          </Key>
+          <Property Name="CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPCION" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ACTIVO" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="USUARIO" Relationship="MODELO.USUARIOGRUPO" FromRole="GRUPO" ToRole="USUARIO" />
+          <NavigationProperty Name="ACCION" Relationship="MODELO.GRUPOACCION" FromRole="GRUPO" ToRole="ACCION" />
+        </EntityType>
+        <EntityType Name="FORMULARIO">
+          <Key>
+            <PropertyRef Name="CODIGO" />
+          </Key>
+          <Property Name="CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPCION" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="CLASE" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ACTIVO" Type="Boolean" Nullable="false" />
+          <Property Name="MENU" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SUBMODULO" Relationship="MODELO.SUBMODULOFORMULARIO" FromRole="FORMULARIO" ToRole="SUBMODULO" />
+          <NavigationProperty Name="ACCION" Relationship="MODELO.FORMULARIOACCION" FromRole="FORMULARIO" ToRole="ACCION" />
+        </EntityType>
+        <EntityType Name="ACCION">
+          <Key>
+            <PropertyRef Name="CODIGO" />
+          </Key>
+          <Property Name="CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPCION" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="CONTROL" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="FORMULARIO" Relationship="MODELO.FORMULARIOACCION" FromRole="ACCION" ToRole="FORMULARIO" />
+          <NavigationProperty Name="GRUPO" Relationship="MODELO.GRUPOACCION" FromRole="ACCION" ToRole="GRUPO" />
+        </EntityType>
+        <EntityType Name="MODULO">
+          <Key>
+            <PropertyRef Name="CODIGO" />
+          </Key>
+          <Property Name="CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPCION" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="SUBMODULO" Relationship="MODELO.MODULOSUBMODULO" FromRole="MODULO" ToRole="SUBMODULO" />
+        </EntityType>
+        <EntityType Name="SUBMODULO">
+          <Key>
+            <PropertyRef Name="CODIGO" />
+          </Key>
+          <Property Name="CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPCION" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="MODULO" Relationship="MODELO.MODULOSUBMODULO" FromRole="SUBMODULO" ToRole="MODULO" />
+          <NavigationProperty Name="FORMULARIO" Relationship="MODELO.SUBMODULOFORMULARIO" FromRole="SUBMODULO" ToRole="FORMULARIO" />
+        </EntityType>
+        <Association Name="MODULOSUBMODULO">
+          <End Type="MODELO.MODULO" Role="MODULO" Multiplicity="1" />
+          <End Type="MODELO.SUBMODULO" Role="SUBMODULO" Multiplicity="*" />
+        </Association>
+        <Association Name="SUBMODULOFORMULARIO">
+          <End Type="MODELO.SUBMODULO" Role="SUBMODULO" Multiplicity="1" />
+          <End Type="MODELO.FORMULARIO" Role="FORMULARIO" Multiplicity="*" />
+        </Association>
+        <Association Name="FORMULARIOACCION">
+          <End Type="MODELO.FORMULARIO" Role="FORMULARIO" Multiplicity="1" />
+          <End Type="MODELO.ACCION" Role="ACCION" Multiplicity="*" />
+        </Association>
+        <Association Name="USUARIOGRUPO">
+          <End Type="MODELO.USUARIO" Role="USUARIO" Multiplicity="*" />
+          <End Type="MODELO.GRUPO" Role="GRUPO" Multiplicity="*" />
+        </Association>
+        <Association Name="GRUPOACCION">
+          <End Type="MODELO.GRUPO" Role="GRUPO" Multiplicity="*" />
+          <End Type="MODELO.ACCION" Role="ACCION" Multiplicity="*" >
+          </End>
+        </Association>
+        <EntityType Name="PARAMETRO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DIRECTORIO_IMAGENES" Type="String" Nullable="false" />
+          <Property Name="MAIL_HOST" Type="String" Nullable="false" />
+          <Property Name="MAIL_PORT" Type="Int32" Nullable="false" />
+          <Property Name="ENVIO_MAILS" Type="Boolean" Nullable="false" />
+          <Property Name="MAIL_CUENTA" Type="String" Nullable="false" />
+          <Property Name="MAIL_CLAVE" Type="String" Nullable="false" />
+          <Property Name="MAIL_NOMBRE_REMITENTE" Type="String" Nullable="false" />
+          <Property Name="NOMBRE_EQUIPO" Type="String" Nullable="false" />
+          <Property Name="MAIL_SSL" Type="Boolean" Nullable="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MODELOStoreContainer" CdmEntityContainer="CATALOGO">
+    <EntitySetMapping Name="USUARIOS">
+      <EntityTypeMapping TypeName="IsTypeOf(MODELO.USUARIO)">
+        <MappingFragment StoreEntitySet="USUARIOS">
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="NOMBRE_USUARIO" ColumnName="NOMBRE_USUARIO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="CLAVE" ColumnName="CLAVE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="RESETEAR_CLAVE" ColumnName="RESETEAR_CLAVE" />
+          <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GRUPOS">
+      <EntityTypeMapping TypeName="IsTypeOf(MODELO.GRUPO)">
+        <MappingFragment StoreEntitySet="GRUPOS">
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FORMULARIOS">
+      <EntityTypeMapping TypeName="IsTypeOf(MODELO.FORMULARIO)">
+        <MappingFragment StoreEntitySet="FORMULARIOS">
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="CLASE" ColumnName="CLASE" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="MENU" ColumnName="MENU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ACCIONES">
+      <EntityTypeMapping TypeName="IsTypeOf(MODELO.ACCION)">
+        <MappingFragment StoreEntitySet="ACCIONES">
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="CONTROL" ColumnName="CONTROL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MODULOS">
+      <EntityTypeMapping TypeName="IsTypeOf(MODELO.MODULO)">
+        <MappingFragment StoreEntitySet="MODULOS">
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SUBMODULOS">
+      <EntityTypeMapping TypeName="IsTypeOf(MODELO.SUBMODULO)">
+        <MappingFragment StoreEntitySet="SUBMODULOS">
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PARAMETROS">
+      <EntityTypeMapping TypeName="IsTypeOf(MODELO.PARAMETRO)">
+        <MappingFragment StoreEntitySet="PARAMETROS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DIRECTORIO_IMAGENES" ColumnName="DIRECTORIO_IMAGENES" />
+          <ScalarProperty Name="MAIL_HOST" ColumnName="MAIL_HOST" />
+          <ScalarProperty Name="MAIL_PORT" ColumnName="MAIL_PORT" />
+          <ScalarProperty Name="ENVIO_MAILS" ColumnName="ENVIO_MAILS" />
+          <ScalarProperty Name="MAIL_CUENTA" ColumnName="MAIL_CUENTA" />
+          <ScalarProperty Name="MAIL_CLAVE" ColumnName="MAIL_CLAVE" />
+          <ScalarProperty Name="MAIL_NOMBRE_REMITENTE" ColumnName="MAIL_NOMBRE_REMITENTE" />
+          <ScalarProperty Name="NOMBRE_EQUIPO" ColumnName="NOMBRE_EQUIPO" />
+          <ScalarProperty Name="MAIL_SSL" ColumnName="MAIL_SSL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="MODULOSUBMODULO" TypeName="MODELO.MODULOSUBMODULO" StoreEntitySet="SUBMODULOS">
+      <EndProperty Name="MODULO">
+        <ScalarProperty Name="CODIGO" ColumnName="MODULO_CODIGO" />
+      </EndProperty>
+      <EndProperty Name="SUBMODULO">
+        <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SUBMODULOFORMULARIO" TypeName="MODELO.SUBMODULOFORMULARIO" StoreEntitySet="FORMULARIOS">
+      <EndProperty Name="SUBMODULO">
+        <ScalarProperty Name="CODIGO" ColumnName="SUBMODULO_CODIGO" />
+      </EndProperty>
+      <EndProperty Name="FORMULARIO">
+        <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FORMULARIOACCION" TypeName="MODELO.FORMULARIOACCION" StoreEntitySet="ACCIONES">
+      <EndProperty Name="FORMULARIO">
+        <ScalarProperty Name="CODIGO" ColumnName="FORMULARIO_CODIGO" />
+      </EndProperty>
+      <EndProperty Name="ACCION">
+        <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="USUARIOGRUPO" TypeName="MODELO.USUARIOGRUPO" StoreEntitySet="USUARIOGRUPO">
+      <EndProperty Name="USUARIO">
+        <ScalarProperty Name="CODIGO" ColumnName="USUARIO_CODIGO" />
+      </EndProperty>
+      <EndProperty Name="GRUPO">
+        <ScalarProperty Name="CODIGO" ColumnName="GRUPO_CODIGO" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GRUPOACCION" TypeName="MODELO.GRUPOACCION" StoreEntitySet="GRUPOACCION">
+      <EndProperty Name="GRUPO">
+        <ScalarProperty Name="CODIGO" ColumnName="GRUPO_CODIGO" />
+      </EndProperty>
+      <EndProperty Name="ACCION">
+        <ScalarProperty Name="CODIGO" ColumnName="ACCION_CODIGO" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

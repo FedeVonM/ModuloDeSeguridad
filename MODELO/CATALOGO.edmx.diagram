@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d5dfe6ed6f4c44cbaea14b4fda9ae899" Name="Diagram1" >
+        <EntityTypeShape EntityType="MODELO.USUARIO" Width="2" PointX="0.75" PointY="0.625" />
+        <EntityTypeShape EntityType="MODELO.GRUPO" Width="1.5" PointX="4" PointY="0.625" />
+        <EntityTypeShape EntityType="MODELO.FORMULARIO" Width="1.5" PointX="3" PointY="3.5" />
+        <EntityTypeShape EntityType="MODELO.ACCION" Width="1.5" PointX="5.375" PointY="3.5" />
+        <EntityTypeShape EntityType="MODELO.MODULO" Width="1.5" PointX="0.875" PointY="6.375" />
+        <EntityTypeShape EntityType="MODELO.SUBMODULO" Width="1.5" PointX="1" PointY="4" />
+        <AssociationConnector Association="MODELO.MODULOSUBMODULO" />
+        <AssociationConnector Association="MODELO.SUBMODULOFORMULARIO" />
+        <AssociationConnector Association="MODELO.FORMULARIOACCION" />
+        <AssociationConnector Association="MODELO.USUARIOGRUPO" />
+        <AssociationConnector Association="MODELO.GRUPOACCION" />
+        <EntityTypeShape EntityType="MODELO.PARAMETRO" Width="1.5" PointX="7" PointY="0.5" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
